@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta chaRs et="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Home</title>
+    <style>
+        /* General Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f8fb;
+            color: #333;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #007BFF;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav h1 {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #d4d4d4;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: #d4d4d4;
+            width: 0;
+            transition: width 0.3s;
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content Styling */
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-2px);
+        }
+
+        .welcome-message {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            nav h1 {
+                font-size: 1.5rem;
+            }
+
+            nav .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .welcome-message {
+                font-size: 1.5rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .button {
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Expense Tracker</h1>
+        <div class="nav-links">
+            <a href="{% url 'expense_by_month' %}">View by Month</a>
+            <a href="{% url 'expense_by_category' %}">View by Category</a>
+            <a href="{% url 'create_expense' %}">Add Expense</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="welcome-message">Welcome to Expense Tracker!</h2>
+        <p class="description">Manage your expenses efficiently and stay on top of your finances. Use the options above to view your expenses by month or category, or add a new expense.</p>
+        <a href="{% url 'create_expense' %}" class="button">Get Started</a>
+    </div>
+</body>
+</html>
